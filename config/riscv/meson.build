@@ -65,9 +65,23 @@ vendor_sifive = {
     'arch_config': arch_config_riscv
 }
 
+vendor_rvv = {
+    'description': 'RISC-V RVV',
+    'flags': [
+        ['RTE_MACHINE', '"riscv"'],
+        ['RTE_USE_C11_MEM_MODEL', true],
+        ['RTE_MAX_LCORE', 128],
+        ['RTE_MAX_NUMA_NODES', 2]
+    ],
+    'arch_config': {
+        'rvv': {'machine_args': ['-march=rv64gcv', '-D__riscv_vector']}
+    }
+}
+
 vendors = {
     'generic': vendor_generic,
-    '0x489': vendor_sifive
+    '0x489': vendor_sifive,
+    'rvv' : vendor_rvv,
 }
 
 # Native/cross vendor/arch detection
