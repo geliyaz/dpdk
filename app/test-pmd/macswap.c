@@ -39,6 +39,8 @@
 #include "macswap_sse.h"
 #elif defined(__ARM_NEON)
 #include "macswap_neon.h"
+#elif defined(RTE_ARCH_RISCV) && defined(__riscv_vector) && defined(__riscv_v_intrinsic)
+#include "macswap_rvv.h"
 #else
 #include "macswap.h"
 #endif
